@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.min.js"></script>
+</head>
+<body>
+    <script>
+       /* axios.get('http://mihuan.local/api/login?phone=15072079889&password=123456',{}, function ($response) {
+            console.log($response);
+        })*/
+        /*axios.get('http://mihuan.com/api/user/play?play_status=3&user_id=1000055',{params:{}}, function ($response) {
+            console.log($response);
+        })*/
+
+        axios.get('https://api.91yutang.com/api/user/play?play_status=3&user_id=1000055',{params:{}, headers:{
+                'Authorization' : 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ4Y2ZkZTFiOTIwMTc2ZDA3NmYwMzc2MzhlYWRiYjBlNGYyNTdkNDM3MGU1NzAxNmQ5MTNmNjQ4MmYwMGJkOWI0MTBjNDZjMWQ4NzBkYzNkIn0.eyJhdWQiOiIyIiwianRpIjoiZDhjZmRlMWI5MjAxNzZkMDc2ZjAzNzYzOGVhZGJiMGU0ZjI1N2Q0MzcwZTU3MDE2ZDkxM2Y2NDgyZjAwYmQ5YjQxMGM0NmMxZDg3MGRjM2QiLCJpYXQiOjE1MjgxNjI3NDEsIm5iZiI6MTUyODE2Mjc0MSwiZXhwIjoxNTI5NDU4NzQxLCJzdWIiOiIxMDAwMDU1Iiwic2NvcGVzIjpbXX0.k2Tux3JM1frBpugyEl_nlwH3Ve5BQZ39erzwz9-UDOZ6n6fRqYO3bfpAIaBgajZDvkkbc_0BODenoEJEjq0sDQPOTcciTVH-3wMamwJ31lQy6HmxsG-96xScjOhQ66pPc93quw9GCCtdjkqmlPvPmniPtehbIerdZUy2bY_fTkBm1xq-kMj57mimWpdAXy_3_Qd41QHFJnxVjAM6TYcY16fKtcsOuf-Qsxhll-G53EG5K9o_I5iMuWovtf7B8QofSC7MAUnpXou2fG5ca0F2_QkzDQj9sf8ayePyx6BLV2RTWSEFgLJrwltv6S0VslyfQMa8ebWL5sCJVPCOTtdGgMemBKhC5X7fwhgSd1ROuyAhD-mVRtL-ENZ_cY64vqABtcHi60_GfwCqTshiZiIQsxdZktsSuvZ6H1g5QRwZ6fCxYwJ5vgGEluFklyhv-u-6pbaW-fHxV2CTN0DlQv0QbQGmu4VyScWEXPw5AleWC2UmL8N1stqAD6sdrBffycSNHB8q0r4VUQ-hGq0NOKxI5N9mf68nUN8-ucQCuj08qcRs_RqTvDHQoF9FTFJpd1_OGon4TBWeRrPN8y66WE_yx2FMv606MOH-rfwPN4heF4cNNKJgUX8HOPn10qv_x2o97nLXctbC2D249Y5mkypHUSl6vPzyn0jcBq5JDJW2Lt0'
+            }}, function ($response) {
+            console.log($response);
+        })
+
+
+
+       axios.post('https://api.91yutang.com/api/play/plot_video', {'aliyun_video_id':'1652a1ae87d349ebb8a7534219ffc3bb'}, {
+           headers: {
+               'Authorization' : 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImQ4Y2ZkZTFiOTIwMTc2ZDA3NmYwMzc2MzhlYWRiYjBlNGYyNTdkNDM3MGU1NzAxNmQ5MTNmNjQ4MmYwMGJkOWI0MTBjNDZjMWQ4NzBkYzNkIn0.eyJhdWQiOiIyIiwianRpIjoiZDhjZmRlMWI5MjAxNzZkMDc2ZjAzNzYzOGVhZGJiMGU0ZjI1N2Q0MzcwZTU3MDE2ZDkxM2Y2NDgyZjAwYmQ5YjQxMGM0NmMxZDg3MGRjM2QiLCJpYXQiOjE1MjgxNjI3NDEsIm5iZiI6MTUyODE2Mjc0MSwiZXhwIjoxNTI5NDU4NzQxLCJzdWIiOiIxMDAwMDU1Iiwic2NvcGVzIjpbXX0.k2Tux3JM1frBpugyEl_nlwH3Ve5BQZ39erzwz9-UDOZ6n6fRqYO3bfpAIaBgajZDvkkbc_0BODenoEJEjq0sDQPOTcciTVH-3wMamwJ31lQy6HmxsG-96xScjOhQ66pPc93quw9GCCtdjkqmlPvPmniPtehbIerdZUy2bY_fTkBm1xq-kMj57mimWpdAXy_3_Qd41QHFJnxVjAM6TYcY16fKtcsOuf-Qsxhll-G53EG5K9o_I5iMuWovtf7B8QofSC7MAUnpXou2fG5ca0F2_QkzDQj9sf8ayePyx6BLV2RTWSEFgLJrwltv6S0VslyfQMa8ebWL5sCJVPCOTtdGgMemBKhC5X7fwhgSd1ROuyAhD-mVRtL-ENZ_cY64vqABtcHi60_GfwCqTshiZiIQsxdZktsSuvZ6H1g5QRwZ6fCxYwJ5vgGEluFklyhv-u-6pbaW-fHxV2CTN0DlQv0QbQGmu4VyScWEXPw5AleWC2UmL8N1stqAD6sdrBffycSNHB8q0r4VUQ-hGq0NOKxI5N9mf68nUN8-ucQCuj08qcRs_RqTvDHQoF9FTFJpd1_OGon4TBWeRrPN8y66WE_yx2FMv606MOH-rfwPN4heF4cNNKJgUX8HOPn10qv_x2o97nLXctbC2D249Y5mkypHUSl6vPzyn0jcBq5JDJW2Lt0',
+               'Content-Type': 'application/json'
+           }
+       })
+           .then(function (response) {
+               console.log(response);
+           })
+           .catch(function (error) {
+               console.log(error);
+           });
+
+
+        /*axios.get('https://api.91yutang.com/web/play/share_hot?play_id=1900',{}, function ($response) {
+            console.log($response);
+        })*/
+
+
+    </script>
+</body>
+</html>

@@ -12,4 +12,8 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+    $router->resource('topics', 'TopicController');
+    $router->resource('articles', 'ArticleController');
+    $router->resource('categories', 'CategoryController');
+    $router->resource('productions', 'ProductionController');
 });

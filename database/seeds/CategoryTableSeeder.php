@@ -37,7 +37,7 @@ class CategoryTableSeeder extends Seeder
             ['parent_id' => 1, 'sort' => 0, 'name' => '暖手宝'],
         ];
 
-        $menu = new \App\Models\Category();
+        $menu = new \App\Models\CategoryTree();
         $menu->truncate();
         foreach ($data as $item) {
             $menu->firstOrCreate($item);

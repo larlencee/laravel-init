@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(\Encore\Admin\Auth\Database\AdminTablesSeeder::class);
         $this->call(AdminMenuTableSeeder::class);
         $this->call(CategoryTableSeeder::class);
+        $this->call(TagCategoriesTableSeeder::class);
     }
 }

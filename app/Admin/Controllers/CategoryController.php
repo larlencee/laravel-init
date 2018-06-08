@@ -7,7 +7,7 @@ namespace App\Admin\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\CategoryTree;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Form;
@@ -21,7 +21,7 @@ class CategoryController extends Controller
     {
         return Admin::content(function (Content $content) {
             $content->header('分类');
-            $content->body(Category::tree());
+            $content->body(CategoryTree::tree());
         });
     }
 
@@ -49,9 +49,9 @@ class CategoryController extends Controller
 
     protected function form()
     {
-        return Admin::form(Category::class, function (Form $form) {
+        return Admin::form(CategoryTree::class, function (Form $form) {
             $form->text('name', '名称')->rules('required');
-            $form->select('parent_id', '上级分类')->options(Category::selectOptions());
+            $form->select('parent_id', '上级分类')->options(CategoryTree::selectOptions());
             $form->text('sort', '排序')->default(0);
 
         });

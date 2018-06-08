@@ -12,6 +12,11 @@ class Production extends Model
 {
     protected $guarded = [];
 
+    public function productionCategories()
+    {
+        return $this->hasMany(Category::class);
+    }
+
     public function productionExt()
     {
         return $this->hasOne(ProductionExt::class);

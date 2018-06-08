@@ -17,7 +17,6 @@ class CreateProductionTagsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('production_id')->nullable(false)->default(0);
             $table->integer('tag_id')->nullable(false)->default(0);
-            $table->softDeletes();
             $table->timestamps();
         });
     }

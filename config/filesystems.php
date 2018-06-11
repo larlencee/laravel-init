@@ -63,6 +63,17 @@ return [
             'bucket' => env('AWS_BUCKET'),
         ],
 
+        'admin' => [
+            'driver'        => 'oss',
+            'access_id'     =>  env('ALIYUN_ACCESS_KEY'),
+            'access_key'    => env('ALIYUN_ACCESS_KEY_SECRET'),
+            'bucket'        => env('ALIYUN_OSS_BUCKET_NAME'),
+            'endpoint'      => 'oss-cn-beijing.aliyuncs.com', // OSS 外网节点或自定义外部域名
+            'ssl'           => true,
+            'isCName'       => false ,
+            'debug'         => true
+        ],
+
     ],
 
 ];

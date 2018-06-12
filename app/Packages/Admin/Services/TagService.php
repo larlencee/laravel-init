@@ -5,6 +5,7 @@
 
 namespace App\Packages\Admin\Services;
 
+use App\Models\Tag;
 use App\Models\TagCategory;
 
 class TagService
@@ -18,4 +19,10 @@ class TagService
         }
         return $option;
     }
+
+    public static function getTagOptions()
+    {
+        return Tag::all()->pluck('name', 'id');
+    }
+
 }

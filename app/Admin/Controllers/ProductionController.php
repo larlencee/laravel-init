@@ -6,7 +6,10 @@
 namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\CategoryTree;
 use App\Models\Production;
+use App\Models\Tag;
 use App\Packages\Admin\Services\AdminOptions;
 use App\Packages\Admin\Services\TagService;
 use Encore\Admin\Controllers\ModelForm;
@@ -57,7 +60,7 @@ class ProductionController extends  Controller
             $grid->visit_count('浏览数');
             $grid->like_count('点赞数');
             $grid->collect_count('收藏数');
-            $grid->sort('排序')->sortable();
+            $grid->sort('排序')->sortable()->editable();
             $grid->updated_at('更新时间');
         });
     }
@@ -65,16 +68,15 @@ class ProductionController extends  Controller
     protected function form()
     {
         return Admin::form(Production::class, function (Form $form) {
-            $form->multipleSelect('category')->options(TagService::getTagCategoriesOptions());
+            $form->multipleSelect('production_categories', '分类')->options(CategoryTree::selectOptions());
+            $form->multipleSelect('production_tags', '标签')->options(TagService::getTagOptions());
             $form->text('title','标题')->rules('required');
             $form->select('platform_type','平台类型')->options(AdminOptions::getPlatformOptions())->default(1)->rules('required');
             $form->url('platform_url','购买链接')->rules('required');
             $form->number('price','价格')->rules('required');
             $form->number('sort', '排序')->default(0);
-
             $form->multipleImage('images','图片');
-
-            $form->textarea('productionExt.contents','正文')->rules('required');
+            $form->textarea('production_ext.contents','正文')->rules('required');
         });
     }
 

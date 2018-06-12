@@ -18,7 +18,7 @@ class CreateProductionsTable extends Migration
             $table->tinyInteger('admin_id')->nullable(false)->default(0);
             $table->tinyInteger('object_id')->nullable(false)->default(0);
             $table->tinyInteger('scence_id')->nullable(false)->default(0);
-            $table->tinyInteger('platform_id')->nullable(false)->default(0)->comment('【平台类型】 1淘宝 2天猫');
+            $table->tinyInteger('platform_type')->nullable(false)->default(0)->comment('【平台类型】 1淘宝 2天猫');
             $table->string('platform_url')->nullable(false)->default(0)->comment('【购买链接】');
             $table->tinyInteger('who_id')->nullable(false)->default(0);
             $table->integer('production_status')->nullable(false)->default(0)->comment('状态:0未发布1草稿2已发布');

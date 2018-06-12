@@ -12,12 +12,17 @@ class Production extends Model
 {
     protected $guarded = [];
 
-    public function productionCategories()
+    public function production_categories()
     {
-        return $this->hasMany(Category::class);
+        return $this->belongsToMany(Category::class, 'production_categories', 'production_id', 'category_id');
     }
 
-    public function productionExt()
+    public function production_tags()
+    {
+        return $this->belongsToMany(Tag::class, 'production_tags', 'production_id', 'tag_id');
+    }
+
+    public function production_ext()
     {
         return $this->hasOne(ProductionExt::class);
     }

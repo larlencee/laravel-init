@@ -17,6 +17,7 @@ class ProductionController extends WebController
     {
         $categories = CategoryService::getAllCategory();
         $productions = ProductionService::getProduction($request->all());
+        dd($productions);
         return view('web::Production.production', [
             'categories' => $categories,
             'productions' => $productions

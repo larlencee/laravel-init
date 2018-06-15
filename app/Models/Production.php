@@ -27,13 +27,13 @@ class Production extends Model
         return $this->hasOne(ProductionExt::class);
     }
 
-    public function productionImage()
+    public function production_images()
     {
         return $this->hasMany(ProductionImage::class);
     }
 
 
-    public function setImagesAttribute($images)
+    /*public function setImagesAttribute($images)
     {
         if (is_array($images)) {
             $this->attributes['images'] = json_encode($images);
@@ -43,5 +43,5 @@ class Production extends Model
     public function getImagesAttribute($images)
     {
         return json_decode($images, true);
-    }
+    }*/
 }

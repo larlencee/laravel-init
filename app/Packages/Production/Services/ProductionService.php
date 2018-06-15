@@ -14,7 +14,8 @@ class ProductionService
         $category_id = $data['category_id']??0;
         return DB::table('productions')
             ->leftJoin('production_categories', 'productions.id', '=', 'production_categories.production_id')
+            ->leftJoin('production_images', 'productions.id', '=', 'production_images.production_id')
             ->where('production_categories.category_id',$category_id)
-            ->paginate(1);
+            ->paginate(12);
     }
 }

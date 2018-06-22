@@ -12,9 +12,15 @@ class Production extends Model
 {
     protected $guarded = [];
 
+    /*分类多对多*/
     public function production_categories()
     {
         return $this->belongsToMany(Category::class, 'production_categories', 'production_id', 'category_id');
+    }
+
+    public function production_category()
+    {
+        return $this->hasMany(ProductionCategory::class);
     }
 
     public function production_tags()
@@ -26,6 +32,8 @@ class Production extends Model
     {
         return $this->hasOne(ProductionExt::class);
     }
+
+
 
     public function production_images()
     {

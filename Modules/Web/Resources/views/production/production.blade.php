@@ -1,52 +1,31 @@
 @extends('web::layouts.master')
 
 @section('content')
-    <div class="album py-5 bg-light">
-        <div class="container">
-            <div class="row">
-                <div>
-                    <ul>
-                        @foreach($categories as $value)
-                            <li><a href="{{ url("productions?category_id=" . $value['id'])}}">{{$value['name']}}</a></li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                @foreach($productions as $value)
-                <div class="col-md-4">
-                    <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" data-src="{{$value->image_url}}">
-                        <div class="card-body">
-                            <p class="card-text">{{$value->title}}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                </div>
-                                <small class="text-muted"><span class="rmd">¥</span><span class="price">{{$value->price}}</span></small>
-                                <small class="text-muted">90人喜欢</small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-            <nav aria-label="Page navigation">
-                {{ $productions->appends(['category_id' => request()->input('category_id')])->links() }}
-            <nav>
-        </div>
+    <div class="category-box">
+        <ul class="">
+            @foreach($categories as $value)
+                <li><a href="{{ url("productions?category_id=" . $value['id'])}}">{{$value['name']}}</a></li>
+            @endforeach
+        </ul>
     </div>
-   {{-- <h1>Hello World</h1>
-
-    @foreach($categories as $value)
-        {{$value->name}}
-    @endforeach
-
-    <p>
-        This view is loaded from module: {!! config('web.name') !!}
-    </p>
-
-    @foreach($productions as $value)
-        {{$value->title}}
-    @endforeach--}}
+    <div class="index-production-div">
+        <ul class="index-production-ul">
+            @foreach($productions as $value)
+                <li>
+                    <dl>
+                        <dt>
+                            <a target="_blank" class="img-h" href=""><img src="{{$value->image_url ?? 'images/test.jpg'}}"></a>
+                            <span class="diy">定制</span>
+                        </dt>
+                        <dd><a href="" class="production-title">{{$value->title}}</a></dd>
+                        <dd>
+                            <span class="rmd">¥</span><span class="production-price">{{$value->price}}</span>
+                            <span class="production-like">{{$value->like_count ?? 0}}人喜欢</span>
+                        </dd>
+                    </dl>
+                </li>
+            @endforeach
+        </ul>
+    </div>
 
 @stop

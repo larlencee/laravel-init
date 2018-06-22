@@ -17,6 +17,8 @@ class CreateArticlesTable extends Migration
             $table->increments('id');
             $table->integer('article_status')->nullable(false)->default(0)->comment('状态:0未发布1草稿2已发布');
             $table->string('title')->nullable(false)->default('');
+            $table->string('meta_keywords')->nullable(false)->default('');
+            $table->string('meta_description')->nullable(false)->default('');
             $table->string('cover_url')->nullable(false)->default('');
             $table->string('description')->nullable(false)->default('');
             $table->integer('category_id')->nullable(false)->default(0);

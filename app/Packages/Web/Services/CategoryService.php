@@ -13,6 +13,6 @@ class CategoryService
 
     public static function getAllCategory()
     {
-        return CategoryTree::all();
+        return CategoryTree::limit(5)->get();
     }
 }

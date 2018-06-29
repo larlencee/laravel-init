@@ -49,7 +49,7 @@ class CategoryController extends Controller
             $form->select('parent_id', '上级分类')->options(CategoryTree::selectOptions());
             $form->text('name', '名称 *')->rules('required');
             $form->image('cover_url', '图片');
-            $form->text('sort', '排序')->default(0);
+            $form->number('sort', '排序')->default(0);
 
         });
     }

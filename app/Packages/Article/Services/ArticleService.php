@@ -10,6 +10,16 @@ use App\Models\Article;
 
 class ArticleService
 {
+    public static function getNewestArticleList()
+    {
+        return Article::limit(10)->get();
+    }
+
+    public static function getHotArticleList()
+    {
+        return Article::limit(10)->orderBy('visit_count')->get();
+    }
+
     public static function getArticleList()
     {
         $model = new Article();

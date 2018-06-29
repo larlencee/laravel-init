@@ -20,10 +20,13 @@ $factory->define(\App\Models\Article::class, function (Faker $faker) {
         'meta_description' => $faker->name,
         'cover_url' => $faker->imageUrl(),
         'description' => $faker->name,
+        'source' => $faker->name,
+        'author' => $faker->name,
         'visit_count' => rand(100, 1000),
         'like_count' => rand(100, 1000),
         'collect_count' => rand(100, 1000),
-        'sort' => rand(100, 1000)
+        'sort' => rand(100, 1000),
+        'published_at' => \Carbon\Carbon::now()
     ];
 });
 

@@ -17,11 +17,12 @@ class AdminMenuTableSeeder extends Seeder
     {
 
         $data = [
-            ['parent_id' => 0, 'order' => 00, 'title' => '控制台', 'icon' => 'fa-bar-chart', 'uri' => '/'],
-            ['parent_id' => 0, 'order' => 0, 'title' => '文章', 'icon' => 'fa-list-alt', 'uri' => '/articles'],
-            ['parent_id' => 0, 'order' => 0, 'title' => '商品', 'icon' => 'fas fa-gift', 'uri' => '/productions'],
-            ['parent_id' => 0, 'order' => 0, 'title' => '用户', 'icon' => 'fa fa-user-md', 'uri' => '/users'],
-            ['parent_id' => 0, 'order' => 0, 'title' => '系统', 'icon' => 'fa-tasks', 'uri' => ''],
+            ['parent_id' => 0, 'order' => 1, 'title' => '控制台', 'icon' => 'fa-bar-chart', 'uri' => '/'],
+            ['parent_id' => 0, 'order' => 2, 'title' => '文章', 'icon' => 'fa-list-alt', 'uri' => '/articles'],
+            ['parent_id' => 0, 'order' => 3, 'title' => '商品', 'icon' => 'fas fa-gift', 'uri' => '/productions'],
+            ['parent_id' => 0, 'order' => 4, 'title' => '页面', 'icon' => 'fa fa-file-pdf-o', 'uri' => '/pages'],
+            ['parent_id' => 0, 'order' => 5, 'title' => '用户', 'icon' => 'fa fa-user-md', 'uri' => '/users'],
+            ['parent_id' => 0, 'order' => 6, 'title' => '系统', 'icon' => 'fa-tasks', 'uri' => ''],
 
 
             ['parent_id' => 2, 'order' => 0, 'title' => '写文章', 'icon' => 'fa-list-alt', 'uri' => '/articles'],
@@ -31,6 +32,8 @@ class AdminMenuTableSeeder extends Seeder
             ['parent_id' => 3, 'order' => 0, 'title' => '发布商品', 'icon' => 'fas fa-gift', 'uri' => '/productions'],
             ['parent_id' => 3, 'order' => 0, 'title' => '分类', 'icon' => 'fa fa-bars', 'uri' => '/production_categories'],
             ['parent_id' => 3, 'order' => 0, 'title' => '标签', 'icon' => 'fas fa-tags', 'uri' => '/production_tags'],
+
+            ['parent_id' => 4, 'order' => 0, 'title' => '新建页面', 'icon' => 'fa fa-file-pdf-o', 'uri' => '/pages'],
 
             ['parent_id' => 5, 'order' => 0, 'title' => '管理员', 'icon' => 'fa-users', 'uri' => 'auth/users'],
             ['parent_id' => 5, 'order' => 0, 'title' => '角色', 'icon' => 'fa-user', 'uri' => 'auth/roles'],

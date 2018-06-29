@@ -38,6 +38,14 @@ class ArticleController extends  Controller
         });
     }
 
+    public function create()
+    {
+        return Admin::content(function (Content $content) {
+            $content->header('创建');
+            $content->body($this->form());
+        });
+    }
+
     protected function form()
     {
         return Admin::form(Article::class, function (Form $form) {
@@ -47,12 +55,15 @@ class ArticleController extends  Controller
                 $form->multipleSelect('tag', '标签')->options(ATagService::getTagOptions());
                 $form->text('title','标题*')->rules('required');
                 $form->text('description','描述');
+                $form->editor('article_ext.contents','正文*')->rules('required');
                 $form->image('cover_url','封面*');
                 $form->number('visit_count','浏览数');
                 $form->number('like_count','点赞数');
                 $form->number('collect_count','收藏数');
                 $form->number('sort','排序');
-                $form->editor('article_ext.contents','正文*')->rules('required');
+                $form->text('author','作者');
+                $form->text('source','来源');
+                $form->time('published_at','发布时间');
             });
             $form->tab('SEO 信息', function () use ($form){
                 $form->text('meta_keywords','关键词');
@@ -67,12 +78,12 @@ class ArticleController extends  Controller
         return Admin::grid(Article::class, function (Grid $grid) {
             $grid->id('ID')->sortable();
             $grid->title('标题');
-            $grid->visit_count('浏览数');
-            $grid->like_count('点赞数');
-            $grid->collect_count('收藏数');
-            $grid->sort('排序')->sortable();
-            $grid->created_at('创建时间');
-            $grid->updated_at('更新时间');
+            $grid->cover_url('标题')->image(null, 50, 50);
+            $grid->visit_count('浏览数')->sortable();
+            $grid->like_count('点赞数')->sortable();
+            $grid->collect_count('收藏数')->sortable();
+            $grid->sort('排序')->sortable()->sortable();
+            $grid->updated_at('更新时间')->sortable();
         });
     }
 }

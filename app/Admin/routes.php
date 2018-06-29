@@ -15,6 +15,8 @@ Route::group([
 
     $router->resource('topics', 'TopicController');
 
+    $router->resource('pages', 'PageController');
+
     $router->resource('articles', 'ArticleController');
     $router->resource('article_categories', 'CategoryController');
     $router->resource('article_tags', 'TagController');

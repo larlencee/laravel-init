@@ -6,6 +6,7 @@
 namespace Modules\Web\Http\Controllers;
 
 
+use App\Packages\Article\Services\ArticleService;
 use App\Packages\Web\Services\CategoryService;
 
 class IndexController extends WebController
@@ -13,7 +14,9 @@ class IndexController extends WebController
     public function index()
     {
         $category = CategoryService::getAllCategory();
-        return view('web::index', compact('category'));
+        $articles = ArticleService::getNewestArticleList();
+        $hotArticles = ArticleService::getHotArticleList();
+        return view('web::index', compact('category','articles','hotArticles'));
     }
 
 }

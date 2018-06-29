@@ -12,9 +12,14 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
-    $router->resource('tags', 'TagController');
+
     $router->resource('topics', 'TopicController');
+
     $router->resource('articles', 'ArticleController');
-    $router->resource('categories', 'CategoryController');
+    $router->resource('article_categories', 'CategoryController');
+    $router->resource('article_tags', 'TagController');
+
     $router->resource('productions', 'ProductionController');
+    $router->resource('production_categories', 'CategoryController');
+    $router->resource('production_tags', 'TagController');
 });

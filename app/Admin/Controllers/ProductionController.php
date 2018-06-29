@@ -88,6 +88,11 @@ class ProductionController extends  Controller
                     $form->image('image_url', '图片');
                 });
             });
+
+            $form->tab('SEO 信息', function () use ($form){
+                $form->text('meta_keywords','关键词');
+                $form->text('meta_description','描述');
+            });
         });
     }
 

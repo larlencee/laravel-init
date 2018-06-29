@@ -6,8 +6,10 @@
 namespace App\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\ACategoryTree;
 use App\Models\Article;
-use App\Models\Production;
+use App\Packages\Article\Services\ATagService;
+use Encore\Admin\Controllers\ModelForm;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
@@ -15,6 +17,8 @@ use Encore\Admin\Layout\Content;
 
 class ArticleController extends  Controller
 {
+    use ModelForm;
+
     public function index()
     {
         return Admin::content(function (Content $content) {
@@ -38,12 +42,22 @@ class ArticleController extends  Controller
     {
         return Admin::form(Article::class, function (Form $form) {
 
-            $form->text('title','标题')->rules('required');
-            $form->text('description','描述');
-            $form->text('visit_count','浏览数');
-            $form->text('like_count','点赞数');
-            $form->text('collect_count','收藏数');
-            $form->text('sort','排序');
+            $form->tab('文章基本信息', function () use ($form){
+                $form->multipleSelect('article_a_categories', '分类*')->options(ACategoryTree::selectOptions())->rules('required');
+                $form->multipleSelect('tag', '标签')->options(ATagService::getTagOptions());
+                $form->text('title','标题*')->rules('required');
+                $form->text('description','描述');
+                $form->image('cover_url','封面*');
+                $form->number('visit_count','浏览数');
+                $form->number('like_count','点赞数');
+                $form->number('collect_count','收藏数');
+                $form->number('sort','排序');
+                $form->editor('article_ext.contents','正文*')->rules('required');
+            });
+            $form->tab('SEO 信息', function () use ($form){
+                $form->text('meta_keywords','关键词');
+                $form->text('meta_description','描述');
+            });
 
         });
     }

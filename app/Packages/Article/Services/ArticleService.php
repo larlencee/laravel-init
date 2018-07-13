@@ -22,8 +22,7 @@ class ArticleService
 
     public static function getArticleList()
     {
-        $model = new Article();
-        return $model->get();
+        return Article::limit(10)->orderBy('visit_count')->paginate(10);
     }
 
     public static function createArticle($table, $data)

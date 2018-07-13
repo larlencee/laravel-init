@@ -19,4 +19,9 @@ class IndexController extends WebController
         return view('web::index', compact('category','articles','hotArticles'));
     }
 
+    public function show($article_id)
+    {
+        dd($article_id);
+    }
+
 }
